@@ -19,15 +19,16 @@ public class DocumentService {
     public Document saveDocument(
             String fileName,
             String s3Key,
-            String contentType,
-            Long fileSize
+            long fileSize,
+            String contentType
+
     ){
 
         Document document = new Document();
         document.setFileName(fileName);
-        document.setContentType(contentType);
-        document.setFileSize(fileSize);
         document.setS3Key(s3Key);
+        document.setFileSize(fileSize);
+        document.setContentType(contentType);
         document.setUploadTime(LocalDateTime.now());
 
         return documentRepository.save(document);
